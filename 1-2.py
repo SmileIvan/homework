@@ -10,9 +10,6 @@ import urllib
 import json
 import csv
 
-
-
-
 def download_icd10_v2016():
     url_base="http://apps.who.int/classifications/icd10/browse/2016/en/"
     url_root_concepts_json=url_base+"JsonGetRootConcepts?useHtml=false"
@@ -58,31 +55,7 @@ def download_icd10_v2016():
             writer.writerows(rows)
             print('done')
     csvfile.close()
-download_icd10_v2016()
-
-'''
-    key_first=14
-    count=0
-    cc=0
-    while(count<num):
-        cc=0
-        site=base_site+str_first.format(key_first)
-        resp=urllib.urlopen(site)
-        html=resp.read()
-        bs=BeautifulSoup(html, "html.parser")
-        for tag_img in bs.find_all(name="img"):
-            src=tag_img.get("src")
-            if src[-7:-4]!="pid":
-                continue
-            print count,src
-            urllib.urlretrieve(src, 'download\\%02d.jpg'%count)
-            count+=1
-            cc+=1
-            if cc>=20:
-                break
-        
-        key_first+=35
-        
-dpfbing("giraffe",1000)
-
-'''
+    
+    
+if __name__ == '__main__' :
+    download_icd10_v2016()
